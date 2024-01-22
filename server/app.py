@@ -71,7 +71,7 @@ def post_restaurant_pizza():
     data = request.get_json()
 
     # Validate the data
-    if 'price' not in data or not (1 <= int(data['price']) <= 30):  # Convert to integer
+    if 'price' not in data or not (1 <= int(data['price']) <= 100):  # Convert to integer
         return jsonify({"errors": ["Validation errors"]}), 400
 
     pizza = Pizza.query.get(data.get('pizza_id'))
