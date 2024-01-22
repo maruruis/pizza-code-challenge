@@ -71,7 +71,7 @@ def post_restaurant_pizza():
     data = request.get_json()
 
     # Validate the data
-    if 'price' not in data or not (1 <= int(data['price']) <= 100):  # Convert to integer
+    if 'price' not in data or not (1 <= int(data['price']) <= 100):  
         return jsonify({"errors": ["Validation errors"]}), 400
 
     pizza = Pizza.query.get(data.get('pizza_id'))
@@ -82,7 +82,7 @@ def post_restaurant_pizza():
         return jsonify({"errors": ["Pizza or Restaurant not found"]}), 404
 
     new_restaurant_pizza = RestaurantPizza(
-        price=int(data.get('price')),  # Convert to integer
+        price=int(data.get('price')),  
         pizza=pizza,
         restaurant=restaurant
     )
